@@ -29,7 +29,7 @@ st.title("🏦 Bank Marketing Dataset Prediction Dashboard")
 # ==========================================
 # 📍 ADD THE LOGO CODE BLOCK HERE (Line 31)
 # ==========================================
-  st.markdown(
+st.markdown(
     """
     <style>
     [data-testid="stAppViewContainer"] {
