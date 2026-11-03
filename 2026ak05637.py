@@ -29,19 +29,6 @@ st.title("🏦 Bank Marketing Dataset Prediction Dashboard")
 # ==========================================
 # 📍 ADD THE LOGO CODE BLOCK HERE (Line 31)
 # ==========================================
-import base64
-
-def get_base64_image(image_path):
-    """Encodes a local file asset into a Base64 text string for safe HTML injection."""
-    if os.path.exists(image_path):
-        with open(image_path, "rb") as img_file:
-            return base64.b64encode(img_file.read()).decode()
-    return None
-
-# Load your local GitHub file directly from your root directory path
-encoded_logo = get_base64_image("BITSLogo.png")
-
-if encoded_logo:
     st.markdown(
         """
         <style>
