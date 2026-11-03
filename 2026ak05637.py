@@ -40,7 +40,8 @@ for col in df.columns:
     if df[col].dtype == 'object':
         df[col] = le.fit_transform(df[col])
 
-display(df.head())
+#display(df.head())
+st.dataframe(df.head())
 
 X = df.drop('y', axis=1)
 y = df['y']
