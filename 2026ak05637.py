@@ -33,12 +33,19 @@ print(df.shape)
 st.dataframe(df.head())
 
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 le = LabelEncoder()
 
-for col in df.columns:
-    if df[col].dtype == 'object':
-        df[col] = le.fit_transform(df[col])
+# Automatically selects columns that are objects, strings, or categories
+categorical_cols = df.select_dtypes(exclude=[np.number]).columns
+
+for col in categorical_cols:
+    df[col] = le.fit_transform(df[col])
+    
+#for col in df.columns:
+    #if df[col].dtype == 'object':
+        #df[col] = le.fit_transform(df[col])
 
 # display(df.head())
 st.dataframe(df.head())
