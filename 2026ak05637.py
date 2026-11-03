@@ -191,7 +191,8 @@ results = {
 }
 
 results_df = pd.DataFrame(results).T
-display(results_df.round(4))
+#display(results_df.round(4))
+st.dataframe(results_df.round(4))
 
 import os
 import joblib
