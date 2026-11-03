@@ -46,7 +46,7 @@ if encoded_logo:
         """
         <style>
         [data-testid="stAppViewContainer"] {{
-            background-image: url("https://github.com/2026ak05637-MTech/Bank-Marketing-Dataset/blob/main/BITSLogo.png");
+            background-image: url("https://wikimedia.org");
             background-repeat: no-repeat;
             background-size: 380px;
             background-position: center 75%;
