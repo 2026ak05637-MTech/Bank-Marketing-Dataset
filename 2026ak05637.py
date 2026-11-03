@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1J6VeDRZJNFXrxzkHPpijobBSjOLBH6yY
 """
 
-!pip install pandas numpy matplotlib seaborn scikit-learn streamlit joblib
-
 import pandas as pd
 import urllib.request
 import zipfile
@@ -137,6 +135,9 @@ metrics_list = [
 comparison_df = pd.DataFrame(metrics_list)
 display(comparison_df.round(4))
 
+from google.colab import drive
+drive.mount('/content/drive')
+
 def evaluate_model(model, X_eval):
     y_pred = model.predict(X_eval)
 
@@ -183,6 +184,11 @@ joblib.dump(svm, "model/svm.pkl")
 
 print("All five models have been successfully saved inside the 'model/' directory:")
 print(os.listdir("model"))
+
+print("| Model | Accuracy | Precision | Recall | F1 Score | AUC | MCC |")
+print("| :--- | :---: | :---: | :---: | :---: | :---: | :---: |")
+for model_name, row in results_df.iterrows():
+    print(f"| {model_name} | {row['Accuracy']:.4f} | {row['Precision']:.4f} | {row['Recall']:.4f} | {row['F1']:.4f} | {row['AUC']:.4f} | {row['MCC']:.4f} |")
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, accuracy_score
