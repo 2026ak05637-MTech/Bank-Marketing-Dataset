@@ -29,12 +29,12 @@ st.title("🏦 Bank Marketing Dataset Prediction Dashboard")
 # ==========================================
 # 📍 ADD THE LOGO CODE BLOCK HERE (Line 31)
 # ==========================================
-logo_filename = "BITSLogo.png" 
+logo_url = "https://githubusercontent.com"
 st.markdown(
     """
     <style>
     [data-testid="stAppViewContainer"] {
-        background-image: url("app/static/{logo_filename}");
+        background-image: url("{logo_url}");
         background-repeat: no-repeat;
         background-size: 380px;
         background-position: center 75%;
