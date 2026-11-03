@@ -43,7 +43,7 @@ encoded_logo = get_base64_image("BITSLogo.png")
 
 if encoded_logo:
     st.markdown(
-        f"""
+        """
         <style>
         [data-testid="stAppViewContainer"] {{
             background-image: url("data:image/png;base64,{encoded_logo}");
