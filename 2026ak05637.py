@@ -29,29 +29,28 @@ st.title("🏦 Bank Marketing Dataset Prediction Dashboard")
 # ==========================================
 # 📍 ADD THE LOGO CODE BLOCK HERE (Line 31)
 # ==========================================
-    st.markdown(
-        """
-        <style>
-        [data-testid="stAppViewContainer"] {{
-            background-image: url("https://wikimedia.org");
-            background-repeat: no-repeat;
-            background-size: 380px;
-            background-position: center 75%;
-            background-attachment: fixed;
-        }}
-        /* Smooth opacity screen overlay to guarantee high data table and text readability */
-        [data-testid="stAppViewContainer"]::before {{
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(255, 255, 255, 0.94);
-            z-index: -1;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
+   st.markdown(
+    """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-image: url("https://wikimedia.org");
+        background-repeat: no-repeat;
+        background-size: 380px;
+        background-position: center 75%;
+        background-attachment: fixed;
+    }
+    /* Translucent overlay guarantees high data grid and text readability */
+    [data-testid="stAppViewContainer"]::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(255, 255, 255, 0.94);
+        z-index: -1;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # ==========================================
 # BACKEND COMPONENT: DATA PROCESSING & CACHING
 # ==========================================
