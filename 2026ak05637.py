@@ -11,6 +11,7 @@ import pandas as pd
 import urllib.request
 import zipfile
 import os
+import streamlit as st
 
 # Download and extract the bank dataset if it doesn't exist
 if not os.path.exists("bank.csv"):
@@ -28,7 +29,8 @@ if not os.path.exists("bank.csv"):
 # Read and display
 df = pd.read_csv("bank.csv", sep=";")
 print(df.shape)
-display(df.head())
+# display(df.head())
+st.dataframe(df.head())
 
 from sklearn.preprocessing import LabelEncoder
 
