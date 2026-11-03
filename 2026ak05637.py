@@ -11,7 +11,6 @@ import pandas as pd
 import urllib.request
 import zipfile
 import os
-import streamlit as st
 
 # Download and extract the bank dataset if it doesn't exist
 if not os.path.exists("bank.csv"):
@@ -29,8 +28,7 @@ if not os.path.exists("bank.csv"):
 # Read and display
 df = pd.read_csv("bank.csv", sep=";")
 print(df.shape)
-# display(df.head())
-st.dataframe(df.head())
+display(df.head())
 
 from sklearn.preprocessing import LabelEncoder
 
@@ -40,8 +38,7 @@ for col in df.columns:
     if df[col].dtype == 'object':
         df[col] = le.fit_transform(df[col])
 
-#display(df.head())
-st.dataframe(df.head())
+display(df.head())
 
 X = df.drop('y', axis=1)
 y = df['y']
@@ -102,6 +99,22 @@ print(classification_report(y_test, y_pred_dt))
 
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, matthews_corrcoef
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+
+# Instantiate and fit missing models
+if 'knn' not in globals():
+    knn = KNeighborsClassifier(n_neighbors=5)
+    knn.fit(X_train_scaled, y_train)
+
+if 'nb' not in globals():
+    nb = GaussianNB()
+    nb.fit(X_train_scaled, y_train)
+
+if 'svm' not in globals():
+    svm = SVC(probability=True, class_weight='balanced', random_state=42)
+    svm.fit(X_train_scaled, y_train)
 
 def get_metrics(model_name, model, X_eval, y_true):
     """Helper to consistently compute evaluation metrics for both scaled and unscaled models."""
@@ -137,9 +150,6 @@ metrics_list = [
 # Compile into a DataFrame for comparison
 comparison_df = pd.DataFrame(metrics_list)
 display(comparison_df.round(4))
-
-from google.colab import drive
-drive.mount('/content/drive')
 
 def evaluate_model(model, X_eval):
     y_pred = model.predict(X_eval)
