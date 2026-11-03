@@ -29,7 +29,7 @@ st.title("🏦 Bank Marketing Dataset Prediction Dashboard")
 # ==========================================
 # 📍 ADD THE LOGO CODE BLOCK HERE (Line 31)
 # ==========================================
-logo_filename = "BITS Logo.png" 
+logo_filename = "BITSLogo.png" 
 st.markdown(
     """
     <style>
