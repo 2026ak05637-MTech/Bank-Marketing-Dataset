@@ -29,29 +29,41 @@ st.title("🏦 Bank Marketing Dataset Prediction Dashboard")
 # ==========================================
 # 📍 ADD THE LOGO CODE BLOCK HERE (Line 31)
 # ==========================================
-logo_url = "https://githubusercontent.com"
-st.markdown(
-    """
-    <style>
-    [data-testid="stAppViewContainer"] {
-        background-image: url("{logo_url}");
-        background-repeat: no-repeat;
-        background-size: 380px;
-        background-position: center 75%;
-        background-attachment: fixed;
-    }
-    /* Smooth opacity screen overlay to guarantee high data table and text readability */
-    [data-testid="stAppViewContainer"]::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-color: rgba(255, 255, 255, 0.94);
-        z-index: -1;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+import base64
+
+def get_base64_image(image_path):
+    """Encodes a local file asset into a Base64 text string for safe HTML injection."""
+    if os.path.exists(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    return None
+
+# Load your local GitHub file directly from your root directory path
+encoded_logo = get_base64_image("BITSLogo.png")
+
+if encoded_logo:
+    st.markdown(
+        f"""
+        <style>
+        [data-testid="stAppViewContainer"] {{
+            background-image: url("data:image/png;base64,{encoded_logo}");
+            background-repeat: no-repeat;
+            background-size: 380px;
+            background-position: center 75%;
+            background-attachment: fixed;
+        }}
+        /* Smooth opacity screen overlay to guarantee high data table and text readability */
+        [data-testid="stAppViewContainer"]::before {{
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.94);
+            z-index: -1;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 # ==========================================
 # BACKEND COMPONENT: DATA PROCESSING & CACHING
