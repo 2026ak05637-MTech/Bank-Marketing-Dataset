@@ -152,7 +152,8 @@ metrics_list = [
 
 # Compile into a DataFrame for comparison
 comparison_df = pd.DataFrame(metrics_list)
-display(comparison_df.round(4))
+#display(comparison_df.round(4))
+st.dataframe(comparison_df.round(4))
 
 def evaluate_model(model, X_eval):
     y_pred = model.predict(X_eval)
